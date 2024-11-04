@@ -1,1 +1,18 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: postman/newman:alpine
+    steps:
+      - checkout
+      - run:
+          name: Run Postman Collection
+          command: newman run Swagger_Petstore_Final_Assignment_with_Assertions.postman_collection.json
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
 
